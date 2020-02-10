@@ -113,6 +113,12 @@ function addToBasket(product, quantity) {
   newquantity = oldquantity + parseInt(quantity);
 
   document.cookie = product + "=" + newquantity.toString() + ";path=/";
+  if (quantity>0) {
+        alert('Item added to basket');
+    }
+    else {
+        alert('Quantity is not valid');
+    }
 }
 
 function removeProductFromBasket(product) {
@@ -120,7 +126,13 @@ function removeProductFromBasket(product) {
 }
 
 function changeProductQuantity(product, newquantity) {
-  document.cookie = product + "=" + newquantity.toString() + ";path=/";
+  if (newquantity !== getProductQuantity(product)) {
+    document.cookie = product + "=" + newquantity.toString() + ";path=/";
+       alert('Basket quantity has been changed'); 
+    }
+    else {
+        document.cookie = product + "=" + newquantity.toString() + ";path=/";
+    }
 }
 
 function createEmptyBasket() {
@@ -129,6 +141,7 @@ function createEmptyBasket() {
   for (var i = 0; i < productcount; i++) {
     document.cookie=products[i] + "=0;path=/";
   }
+  alert('Basket cleared');
 }
 
 function createEmptyOrder() {
