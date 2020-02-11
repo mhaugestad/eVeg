@@ -112,9 +112,12 @@ function addToBasket(product, quantity) {
   oldquantity = parseInt(getProductQuantity(product));
   newquantity = oldquantity + parseInt(quantity);
 
-  document.cookie = product + "=" + newquantity.toString() + ";path=/";
-  if (quantity>0) {
+   if (quantity>0) {
+       document.cookie = product + "=" + newquantity.toString() + ";path=/";
         alert('Item added to basket');
+    }
+    else if (quantity<0) {
+        alert('Quantity can not be negative');
     }
     else {
         alert('Quantity is not valid');
@@ -126,9 +129,16 @@ function removeProductFromBasket(product) {
 }
 
 function changeProductQuantity(product, newquantity) {
-  if (newquantity !== getProductQuantity(product)) {
+    if (newquantity<0) {
+      alert('Quantity can not be negative'); 
+    }
+    else if (newquantity !== getProductQuantity(product) && newquantity>0) {
     document.cookie = product + "=" + newquantity.toString() + ";path=/";
        alert('Basket quantity has been changed'); 
+    }
+    else if (newquantity !== getProductQuantity(product) && newquantity==0) {
+        removeProductFromBasket(product);
+        alert('Item removed from basket');
     }
     else {
         document.cookie = product + "=" + newquantity.toString() + ";path=/";
