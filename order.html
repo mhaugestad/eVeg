@@ -11,7 +11,12 @@
       <table align="center">
        <tr>
          <td>
-           Title: <input type="text" name="title" id="title" value="" style="width: 20px;" />
+           Title:
+             <select name="title" id="title" style="width: 60px;">
+             <option value ="Mr">Mr</option>
+             <option value ="Mrs">Mrs</option>
+             <option value="Ms">Ms</option>
+             </select>  
            First Name: <input type="text" name="firstname" id="firstname" value="" style="width: 120px;" />
            Surname: <input type="text" name="surname" id="surname" value="" style="width: 120px;" />
          </td>
@@ -39,7 +44,7 @@
        <tr>
          <td style="text-align: center;">
            <input type="button" name="cancel" value="Cancel" onclick="self.close()" />
-           <input type="button" name="proceed" value="Place Order" onclick="setName();setAddress();setCardDetails();window.open('invoice.html');self.close();"/>
+           <input type="button" name="proceed" value="Place Order" onclick="confirmProcess()"/>
          </td>
        </tr>
       </table>
