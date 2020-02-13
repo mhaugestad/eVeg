@@ -250,3 +250,10 @@ function confirmProcess() {
     self.close();
   }
 }
+
+function confirmCancell() {
+  var con = confirm("Cancell order?");
+  if (con === true) {
+    self.close();
+  }
+}
