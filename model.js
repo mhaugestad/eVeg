@@ -236,3 +236,17 @@ function getCookieVariableValue(variable) {
   var parts = value.split("; " + variable + "=");
   if (parts.length == 2) return parts.pop().split(";").shift()
 }
+
+function confirmProcess() {
+  var con = confirm("Process to checkout?");
+  if (con === true) {
+    setName();
+    setAddress();
+    setCardDetails();
+    window.open("invoice.html");
+    self.close();
+  }
+  else {
+    self.close();
+  }
+}
