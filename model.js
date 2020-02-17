@@ -239,9 +239,14 @@ function confirmOrder() {
         if (address["number"] !== "" && address["street"] !== "" && address["postcode"] !== "" && address["city"] !== "" && address["country"] !== "") {
             cardDetails = getCardDetails();
             if (cardDetails["cardtype"] !== "" && cardDetails["cardnumber"] !== "" && cardDetails["month"] !== "" && cardDetails["year"] !== "") {
-                confirm("Confirm purchase?");
-              window.open('invoice.html');
+                var con = confirm("Confirm purchase?");
+                if (con === true) {
+                window.open('invoice.html');
+                self.close(); 
+                }
+                else {
                 self.close();  
+                } 
             }
             else {
                 alert("Please enter your full card details");
