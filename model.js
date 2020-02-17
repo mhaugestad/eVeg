@@ -1,26 +1,5 @@
 function getProductDetails() {
   productDetails = {};
-  productDetails["carrots"] = {};
-  productDetails["carrots"]["image"] = "carrots.gif";
-  productDetails["carrots"]["name"] = "Carrots";
-  productDetails["carrots"]["description"] = "not just for rabbits";
-  productDetails["carrots"]["units"] = "1kg";
-  productDetails["carrots"]["price"] = 0.99;
-
-  productDetails["bananas"] = {};
-  productDetails["bananas"]["image"] = "bananas.gif";
-  productDetails["bananas"]["name"] = "Bananas";
-  productDetails["bananas"]["description"] = "Yellow and banana-shaped";
-  productDetails["bananas"]["units"] = "500g";
-  productDetails["bananas"]["price"] = 1.29;
-
-  productDetails["coconut"] = {};
-  productDetails["coconut"]["image"] = "coconut.gif";
-  productDetails["coconut"]["name"] = "Coconut";
-  productDetails["coconut"]["description"] = "That exotic stuff";
-  productDetails["coconut"]["units"] = "1";
-  productDetails["coconut"]["price"] = 2.99;
-
   productDetails["apples"] = {};
   productDetails["apples"]["image"] = "apples.gif";
   productDetails["apples"]["name"] = "Apples";
@@ -28,20 +7,41 @@ function getProductDetails() {
   productDetails["apples"]["units"] = "1kg";
   productDetails["apples"]["price"] = 1.49;
 
+  productDetails["bananas"] = {};
+  productDetails["bananas"]["image"] = "bananas.gif";
+  productDetails["bananas"]["name"] = "Bananas";
+  productDetails["bananas"]["description"] = "Yellow and banana-shaped";
+  productDetails["bananas"]["units"] = "500g";
+  productDetails["bananas"]["price"] = 1.29;
+    
+  productDetails["beans"] = {};
+  productDetails["beans"]["image"] = "beans.gif";
+  productDetails["beans"]["name"] = "Beans";
+  productDetails["beans"]["description"] = "Green and healthy";
+  productDetails["beans"]["units"] = "1kg";
+  productDetails["beans"]["price"] = 1.29;
+    
+  productDetails["carrots"] = {};
+  productDetails["carrots"]["image"] = "carrots.gif";
+  productDetails["carrots"]["name"] = "Carrots";
+  productDetails["carrots"]["description"] = "Not just for rabbits";
+  productDetails["carrots"]["units"] = "1kg";
+  productDetails["carrots"]["price"] = 0.99;
+
   productDetails["cherries"] = {};
   productDetails["cherries"]["image"] = "cherries.gif";
   productDetails["cherries"]["name"] = "Cherries";
   productDetails["cherries"]["description"] = "Cherry pancake anyone?";
   productDetails["cherries"]["units"] = "500g";
   productDetails["cherries"]["price"] = 1.99;
-
-  productDetails["tomatoes"] = {};
-  productDetails["tomatoes"]["image"] = "tomatoes.gif";
-  productDetails["tomatoes"]["name"] = "Tomatoes";
-  productDetails["tomatoes"]["description"] = "Red and ripe";
-  productDetails["tomatoes"]["units"] = "500g";
-  productDetails["tomatoes"]["price"] = 1.99;
-
+    
+  productDetails["coconut"] = {};
+  productDetails["coconut"]["image"] = "coconut.gif";
+  productDetails["coconut"]["name"] = "Coconut";
+  productDetails["coconut"]["description"] = "That exotic stuff";
+  productDetails["coconut"]["units"] = "1";
+  productDetails["coconut"]["price"] = 2.99;
+    
   productDetails["potatoes"] = {};
   productDetails["potatoes"]["image"] = "potatoes.gif";
   productDetails["potatoes"]["name"] = "Potatoes";
@@ -49,12 +49,12 @@ function getProductDetails() {
   productDetails["potatoes"]["units"] = "1kg";
   productDetails["potatoes"]["price"] = 0.99;
 
-  productDetails["beans"] = {};
-  productDetails["beans"]["image"] = "beans.gif";
-  productDetails["beans"]["name"] = "Beans";
-  productDetails["beans"]["description"] = "Green and healthy";
-  productDetails["beans"]["units"] = "1kg";
-  productDetails["beans"]["price"] = 1.29;
+  productDetails["tomatoes"] = {};
+  productDetails["tomatoes"]["image"] = "tomatoes.gif";
+  productDetails["tomatoes"]["name"] = "Tomatoes";
+  productDetails["tomatoes"]["description"] = "Red and ripe";
+  productDetails["tomatoes"]["units"] = "500g";
+  productDetails["tomatoes"]["price"] = 1.99;
 
   return productDetails;
 }
@@ -126,6 +126,8 @@ function addToBasket(product, quantity) {
 
 function removeProductFromBasket(product) {
   document.cookie = product + "=0;path=/";
+    alert('Item removed from basket');
+    window.location.reload();
 }
 
 function changeProductQuantity(product, newquantity) {
@@ -138,11 +140,11 @@ function changeProductQuantity(product, newquantity) {
     }
     else if (newquantity !== getProductQuantity(product) && newquantity==0) {
         removeProductFromBasket(product);
-        alert('Item removed from basket');
     }
     else {
         document.cookie = product + "=" + newquantity.toString() + ";path=/";
     }
+    window.location.reload();
 }
 
 function createEmptyBasket() {
@@ -151,7 +153,6 @@ function createEmptyBasket() {
   for (var i = 0; i < productcount; i++) {
     document.cookie=products[i] + "=0;path=/";
   }
-  alert('Basket cleared');
 }
 
 function createEmptyOrder() {
@@ -229,6 +230,30 @@ function getCardDetails() {
   cardDetails["year"] = getCookieVariableValue('year');
 
   return cardDetails;
+}
+
+function confirmOrder() {
+    name = getName();
+    if (name["title"] !== "" && name["firstname"] !== "" && name["surname"] !== "") {
+        address = getAddress();
+        if (address["number"] !== "" && address["street"] !== "" && address["postcode"] !== "" && address["city"] !== "" && address["country"] !== "") {
+            cardDetails = getCardDetails();
+            if (cardDetails["cardtype"] !== "" && cardDetails["cardnumber"] !== "" && cardDetails["month"] !== "" && cardDetails["year"] !== "") {
+                confirm("Confirm purchase?");
+              window.open('invoice.html');
+                self.close();  
+            }
+            else {
+                alert("Please enter your full card details");
+            }
+        }
+        else {
+            alert("Please enter your full name and address");
+        }
+    }
+    else {
+        alert("Please enter your full name and address");
+    }
 }
 
 function getCookieVariableValue(variable) {

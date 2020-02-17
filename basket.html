@@ -16,11 +16,12 @@
             if (basket[product] > 0) {
               document.write('       <tr>\n');
               document.write('         <td><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
-              document.write('         <td>' + productDetails[product]["name"] + '</td>\n');
+              document.write('         <td><h3>' + productDetails[product]["name"] + '</h3></td>\n');
               document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
               document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
-              document.write('         <td><input name="' + product + '" id="' + product + '" type="number" value="' + basket[product] + '" style="width: 30px;" /></td>\n');
-              document.write('         <td><input name="change' + product + '" type="button" value="change quantity" onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+              document.write('         <td><input name="' + product + '" id="' + product + '" type="number" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
+              document.write('         <td><input name="change' + product + '" type="button" value="change quantity" style="width:120px;font-size: 50px;"  onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+              document.write('         <td><input name="remove' + product + '" type="button" value="remove item" style="width:120px;font-size: 50px;"  onclick="javascript:removeProductFromBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
               document.write('       </tr>\n');
             }
           }
@@ -29,15 +30,18 @@
     </form>
 
     <div align="center" style="position: relative; bottom: 0; left: 0; right: 0; height: 100px;">
+        
+      <form align="center">
+        <input type="button" name="continue" value="Continue Shopping" style="width:180px;font-size: 16pt; font-weight:bold;" onclick="self.close();" />
+        <input type="button" name="clearbasket" value="Clear Basket" style="width:180px;font-size: 16pt; font-weight:bold;" onclick="javascript:createEmptyBasket();alert('Basket cleared');self.close();" />
+        <input type="button" name="order" value="Order" style="width:180px;font-size:16pt; font-weight:bold;" onclick="window.open('order.html');self.close();" />
+      </form>
+        <div align="center" style="width: 500px;">
       <script>
         var totals = calculateTotals();
-        document.write('<p>Total ex VAT: ' + totals["totalnovat"] + ' includes VAT: ' + totals["vat"] + ' Total inc. VAT: ' + totals["total"] + '</p>\n');
+        document.write('<p align="center" style="font-size:13px;">Total ex VAT: &pound;' + totals["totalnovat"] + '</p>' + '<p align="center" style="font-size:13px;">includes VAT: &pound;' + totals["vat"] + '</p>' + '<p align="center" style="font-size:13px;">Total inc. VAT: &pound;' + totals["total"] + '</p>');
       </script>
-      <form align="center">
-        <input type="button" name="continue" value="Continue Shopping" onclick="self.close();" />
-        <input type="button" name="clearbasket" value="Clear Basket" onclick="javascript:createEmptyBasket();self.close();" />
-        <input type="button" name="order" value="Order" onclick="window.open('order.html');self.close();" />
-      </form>
+        </div>
     </div>
   </body>
 </html>

@@ -21,7 +21,7 @@
 
       for (var product in basket) {
         if (basket[product] > 0) {
-          document.write('       ' + productDetails[product]["name"] + '   ' + productDetails[product]["units"] + '\n');
+          document.write('       ' + productDetails[product]["name"] + '   ' + productDetails[product]["units"] + ' x ' + basket[product] + '\n');
           document.write('                                       &pound;' + productDetails[product]["price"] + '\n');
         }
       }
