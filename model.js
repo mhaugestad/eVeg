@@ -122,6 +122,7 @@ function addToBasket(product, quantity) {
     else {
         alert('Quantity is not valid');
     }
+    window.location.reload();
 }
 
 function removeProductFromBasket(product) {
