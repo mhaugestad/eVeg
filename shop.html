@@ -6,6 +6,19 @@
     <script type="text/javascript" src="model.js"></script>
   </head>
   <body>
+    <div align="center">
+      <script>
+          var items = 0
+          var basket = readBasket();
+          var productDetails = getProductDetails();
+          for (var product in productDetails) {
+            if (basket[product] > 0) {
+                items++
+            }
+          }
+           document.write('         <h2>You have ' + items + ' items in your basket</h2>\n');
+          </script>
+      </div>
     <div>
     <form>
       <table align="center">
