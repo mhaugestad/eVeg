@@ -246,6 +246,7 @@ function confirmOrder() {
                 self.close(); 
                 }
                 else {
+                window.open('basket.html');
                 self.close();  
                 } 
             }
