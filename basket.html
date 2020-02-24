@@ -1,47 +1,95 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
-  <head>
-    <title>Your Basket</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script type="text/javascript" src="model.js"></script>
-  </head>
-  <body>
-      <h1 align="center">This is your basket</h1>
-    <form>
-      <table align="center">
+<head>
+  <title>Your Basket</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/basket.css" rel="stylesheet">
+
+  <script type="text/javascript" src="model.js"></script>
+  <style>
+    div.right_bottom{
+      background: #f7f7f7;
+      color:#333333;
+      overflow: hidden;
+      z-index: 9999;
+      position: fixed;
+      padding:10px;
+      text-align:center;
+      width: 250px;
+      height: 190px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      right: 10px;
+      top: 450px;
+    }
+  </style>
+</head>
+<body>
+<div align="center">
+  <main role="main">
+    <div class="py-3 text-center">
+      <img class="d-block mx-auto mb-4" src="img/icon.svg" alt="" style="width: 3rem;height: 3rem">
+      <h1 class="masthead-brand">eVeg</h1>
+    </div>
+    <h1 align="center"><b>Your Basket</b></h1>
+    <div class="id_content">
+      <table class="table table-hover container" style="width: 1280px">
         <script>
           var basket = readBasket();
           var productDetails = getProductDetails();
+          var i = 0;
           for (var product in productDetails) {
             if (basket[product] > 0) {
               document.write('       <tr>\n');
               document.write('         <td><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
-              document.write('         <td><h3>' + productDetails[product]["name"] + '</h3></td>\n');
-              document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
-              document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
-              document.write('         <td><input name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
-              document.write('         <td><input name="change' + product + '" type="button" value="change quantity" style="width:120px;font-size: 10pt;"  onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
-              document.write('         <td><input name="remove' + product + '" type="button" value="remove item" style="width:120px;font-size: 10pt;"  onclick="javascript:removeProductFromBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+              document.write('         <td style="vertical-align: middle"><h4>' + productDetails[product]["name"] + '</h4></td>\n');
+              document.write('         <td style="vertical-align: middle"><h4>' + productDetails[product]["units"] + '</h4></td>\n');
+              document.write('         <td style="vertical-align: middle"><h4>&pound;' + productDetails[product]["price"] + '</h4></td>\n');
+              document.write('         <td style="vertical-align: middle"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="' + basket[product] + '" style="width: 80px;font-size: 20px" /></td>\n');
+              document.write('         <td style="vertical-align: middle"><input name="change' + product + '" type="button" value="change quantity" class="btn btn-outline-success" style="font-size: 20px;"  onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+              document.write('         <td style="vertical-align: middle"><input name="remove' + product + '" type="button" value="remove item" class="btn btn-outline-secondary" style="font-size: 20px;"  onclick="javascript:removeProductFromBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
               document.write('       </tr>\n');
+              i++
             }
+          }
+          if(i===0){
+            document.write('<p align="center" style="font-size:18px;">Your basket is empty.</p>');
           }
         </script>
       </table>
-    </form>
+    </div>
 
     <div align="center" style="position: relative; bottom: 0; left: 0; right: 0; height: 100px;">
-        
       <form align="center">
-        <input type="button" name="continue" value="Continue Shopping" style="width:200px;font-size: 13pt; font-weight:bold;" onclick="window.open('shop.html');self.close();" />
-        <input type="button" name="clearbasket" value="Clear Basket" style="width:200px;font-size: 13pt; font-weight:bold;" onclick="javascript:createEmptyBasket();alert('Basket cleared');window.open('shop.html');self.close();" />
-        <input type="button" name="order" value="Order" style="width:200px;font-size:13pt; font-weight:bold;" onclick="window.open('order.html');self.close();" />
+        <input type="button" name="continue" value="Continue Shopping" class="btn btn-outline-dark" style="width:200px;font-size: 15pt; font-weight:bold;" onclick="window.open('shop.html');self.close();" />
+        <input type="button" name="clearbasket" value="Clear Basket" class="btn btn-outline-dark" style="width:200px;font-size: 15pt; font-weight:bold;" onclick="javascript:createEmptyBasket();alert('Basket cleared');window.open('shop.html');self.close();" />
+        <input type="button" name="order" value="Order" class="btn btn-warning" style="width:200px;font-size:15pt; font-weight:bold;" onclick="window.open('order.html');self.close();" />
       </form>
-        <div align="center" style="width: 500px;">
-      <script>
-        var totals = calculateTotals();
-        document.write('<p align="center" style="font-size:13px;">Total ex VAT: &pound;' + totals["totalnovat"] + '</p>' + '<p align="center" style="font-size:13px;">includes VAT: &pound;' + totals["vat"] + '</p>' + '<p align="center" style="font-size:13px;">Total inc. VAT: &pound;' + totals["total"] + '</p>');
-      </script>
+      <div align="center">
+        <div class="right_bottom">
+          <h3><b>TOTAL</b></h3>
+        <script>
+          var totals = calculateTotals();
+          document.write('<p style="font-size:22px;">Total ex VAT: &pound;' + totals["totalnovat"] + '</p>'
+                  + '<p style="font-size:22px;">includes VAT: &pound;' + totals["vat"] + '</p>'
+                  + '<p style="font-size:22px;">Total inc. VAT: &pound;' + totals["total"] + '</p>');
+        </script>
         </div>
+      </div>
     </div>
-  </body>
+  </main>
+</div>
+  <footer class="mastfoot mt-auto footer">
+    <div class="inner">
+      <h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; line-height: 22.0px; font-size: 18.0px; color: #0f7001; -webkit-text-stroke: #0f7001"><span class="s1"><b>© 2020 InterVeg Coventry Ltd. <br>
+Fresh produce from the Midland's green countryside.<span class="Apple-converted-space"> </span></b></span></h2>
+      <p class="p3"><span class="s1"></span><br></p>
+    </div>
+  </footer>
+
+</body>
 </html>

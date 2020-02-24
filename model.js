@@ -234,7 +234,7 @@ function getCardDetails() {
 }
 
 function confirmOrder() {
-    name = getName();
+    var name = getName();
     if (name["title"] !== "" && name["firstname"] !== "" && name["surname"] !== "") {
         address = getAddress();
         if (address["number"] !== "" && address["street"] !== "" && address["postcode"] !== "" && address["city"] !== "" && address["country"] !== "") {
@@ -267,20 +267,6 @@ function getCookieVariableValue(variable) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + variable + "=");
   if (parts.length == 2) return parts.pop().split(";").shift()
-}
-
-function confirmProcess() {
-  var con = confirm("Process to checkout?");
-  if (con === true) {
-    setName();
-    setAddress();
-    setCardDetails();
-    window.open("invoice.html");
-    self.close();
-  }
-  else {
-    self.close();
-  }
 }
 
 function confirmCancell() {

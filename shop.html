@@ -1,48 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
-  <head>
-    <title></title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script type="text/javascript" src="model.js"></script>
-  </head>
-  <body>
-    <div align="center">
-      <script>
-          var items = 0
-          var basket = readBasket();
-          var productDetails = getProductDetails();
-          for (var product in productDetails) {
-            if (basket[product] > 0) {
-                items++
-            }
-          }
-           document.write('         <h2>You have ' + items + ' items in your basket</h2>\n');
-          </script>
-      </div>
-    <div>
-    <form>
-      <table align="center">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="model.js"></script>
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/cover.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <img class="masthead-brand" src="img/icon.svg" alt="" style="width: 3rem;height: 3rem">
+      <h1 class="masthead-brand">eVeg</h1>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" href="eveg.html" style="font-size: 25px;color: #fd7e14">Home</a>
+        <a class="nav-link active" href="shop.html" style="font-size: 25px">Products</a>
+        <a class="nav-link" href="#" style="font-size: 25px;color: #fd7e14">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main">
+    <table class="table table-hover container" style="width: 1280px">
+      <thead style="font-size: 22px">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Units</th>
+          <th scope="col">Quantity</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
         <script>
           var productDetails = getProductDetails();
           for (var product in productDetails) {
             document.write('       <tr>\n');
-            document.write('         <td><img  src="img/' + productDetails[product]["image"] + '" /></td>\n');
-            document.write('         <td><h3>' + productDetails[product]["name"] + '</h3></td>\n');
-            document.write('         <td>' + productDetails[product]["description"] + '</td>\n');
-            document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
-            document.write('         <td><input name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="" style="width: 50px;" /></td>\n');
-            document.write('         <td><input name="add' + product + '" type="button" value="add to basket" style="width:140px;font-size: 13pt;" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+            document.write('         <td style="vertical-align: middle"><img  src="img/' + productDetails[product]["image"] + '" /></td>\n');
+            document.write('         <td style="vertical-align: middle"><h5>' + productDetails[product]["name"] + '</h5></td>\n');
+            document.write('         <td style="vertical-align: middle"><h5>' + '£' + productDetails[product]["price"] + '</h5></td>\n');
+            document.write('         <td style="vertical-align: middle"><h5>' + productDetails[product]["units"] + '<h4></td>\n');
+            document.write('         <td style="vertical-align: middle"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="" style="width: 80px; font-size: 20px" /></td>\n');
+            document.write('         <td style="vertical-align: middle"><input name="add' + product + '" type="button" value="add to basket" class="btn btn-outline-dark" style="font-size: 20px" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
             document.write('       </tr>\n');
           }
         </script>
-      </table>
-    </form>
-        </div>
-    <div align="center" style="position: relative; bottom: 0; left: 0; right: 0; height: 50px;">
+      </tbody>
+    </table>
+
+    <div>
       <form>
-        <input type="button" style="height:50px;width:180px;font-size:13pt;font-weight: bold;" name="exit" value="Exit" onclick="window.open('eveg.html');self.close();" />
-        <input type="button" style="height:50px;width:180px;font-size:13pt;font-weight: bold;" name="viewbasket" value="View Basket" onclick="window.open('basket.html');self.close();" />
+        <input type="button" class="btn btn-outline-dark" name="exit" value="Exit" style="width: 5rem;height: 3rem;position: fixed;bottom: 2rem;left: 0.5rem;z-index: 9999;font-size: 25px" onclick="window.open('eveg.html');self.close();" />
+        <button type="button" class="btn btn-warning" name="viewbasket" style="width: 12rem;height: 3rem;position: fixed;bottom: 2rem;right: 0.5rem;z-index: 9999;font-size: 25px" onclick="window.open('basket.html');self.close();" data-toggle="popover">
+          View Basket <span class="badge badge-light">
+          <script>
+            var items = 0;
+            var basket = readBasket();
+            var productDetails = getProductDetails();
+            for (var product in productDetails) {
+              if (basket[product] > 0) {
+                items = (parseInt(items) + parseInt(basket[product]));
+              }
+            }
+            document.write(items);
+          </script></span>
+        </button>
       </form>
     </div>
-  </body>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; line-height: 22.0px; font-size: 18.0px; color: #0f7001; -webkit-text-stroke: #0f7001"><span class="s1"><b>© 2020 InterVeg Coventry Ltd. <br>
+Fresh produce from the Midland's green countryside.<span class="Apple-converted-space"> </span></b></span></h2>
+      <p class="p3"><span class="s1"></span><br></p>
+    </div>
+  </footer>
+</div>
+</body>
 </html>
