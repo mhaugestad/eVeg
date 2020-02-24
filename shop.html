@@ -13,7 +13,7 @@
 
 <body class="text-center">
 <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
+  <header class="masthead mb-auto sticky-top">
     <div class="inner">
       <a href="eveg.html">
       <img class="masthead-brand" src="img/icon.svg" alt="" style="width: 3rem;height: 3rem">
@@ -29,7 +29,7 @@
 
   <main role="main">
     <table class="table table-hover container" style="width: 1280px">
-      <thead style="font-size: 22px">
+      <thead style="font-size: 20px">
         <tr>
           <th scope="col"></th>
           <th scope="col">Product</th>
@@ -55,12 +55,21 @@
         </script>
       </tbody>
     </table>
+  </main>
 
-    <div>
-      <form>
-        <input type="button" class="btn btn-outline-dark" name="exit" value="Exit" style="width: 5rem;height: 3rem;position: fixed;bottom: 2rem;left: 0.5rem;z-index: 9999;font-size: 25px" onclick="window.open('eveg.html');self.close();" />
-        <button type="button" class="btn btn-warning" name="viewbasket" style="width: 12rem;height: 3rem;position: fixed;bottom: 2rem;right: 0.5rem;z-index: 9999;font-size: 25px" onclick="window.open('basket.html');self.close();" data-toggle="popover">
-          View Basket <span class="badge badge-light">
+  <footer class="mastfoot mt-auto">
+    <div class="inner" style="height: 125px">
+      <h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; line-height: 22.0px; font-size: 18.0px; color: #0f7001; -webkit-text-stroke: #0f7001"><span class="s1"><b>© 2020 InterVeg Coventry Ltd. <br>
+Fresh produce from the Midland's green countryside.<span class="Apple-converted-space"> </span></b></span></h2>
+      <p class="p3"><span class="s1"></span><br></p>
+    </div>
+  </footer>
+  
+  <nav class="navbar fixed-bottom navbar-light bg-white justify-content-center">
+    <form>
+      <button class="btn btn-outline-dark navbar-btn" name="exit" style="width: 13rem;height: 3rem;font-size: 25px" onclick="window.open('eveg.html');self.close();">Exit</button>
+      <button class="btn btn-warning navbar-btn" name="viewbasket" style="width: 13rem;height: 3rem;font-size: 25px;margin-left: 5px" onclick="window.open('basket.html');self.close();">
+        View Basket <span class="badge badge-light">
           <script>
             var items = 0;
             var basket = readBasket();
@@ -72,18 +81,9 @@
             }
             document.write(items);
           </script></span>
-        </button>
-      </form>
-    </div>
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; line-height: 22.0px; font-size: 18.0px; color: #0f7001; -webkit-text-stroke: #0f7001"><span class="s1"><b>© 2020 InterVeg Coventry Ltd. <br>
-Fresh produce from the Midland's green countryside.<span class="Apple-converted-space"> </span></b></span></h2>
-      <p class="p3"><span class="s1"></span><br></p>
-    </div>
-  </footer>
+      </button>
+    </form>
+  </nav>
 </div>
 </body>
 </html>
