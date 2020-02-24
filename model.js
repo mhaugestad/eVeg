@@ -269,8 +269,8 @@ function getCookieVariableValue(variable) {
   if (parts.length == 2) return parts.pop().split(";").shift()
 }
 
-function confirmCancell() {
-  var con = confirm("Cancell order?");
+function confirmCancel() {
+  var con = confirm("Cancel order?");
   if (con === true) {
     self.close();
   }

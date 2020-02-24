@@ -15,7 +15,9 @@
 <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
+      <a href="eveg.html">
       <img class="masthead-brand" src="img/icon.svg" alt="" style="width: 3rem;height: 3rem">
+      </a>
       <h1 class="masthead-brand">eVeg</h1>
       <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link" href="eveg.html" style="font-size: 25px;color: #fd7e14">Home</a>
@@ -46,8 +48,8 @@
             document.write('         <td style="vertical-align: middle"><h5>' + productDetails[product]["name"] + '</h5></td>\n');
             document.write('         <td style="vertical-align: middle"><h5>' + '£' + productDetails[product]["price"] + '</h5></td>\n');
             document.write('         <td style="vertical-align: middle"><h5>' + productDetails[product]["units"] + '<h4></td>\n');
-            document.write('         <td   width="150" style="vertical-align: middle"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="" style="width: 80px; font-size: 20px" /></td>\n');
-            document.write('         <td   width="150" style="vertical-align: middle"><input name="add' + product + '" type="button" value="add to basket" class="btn btn-outline-dark" style="font-size: 20px" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+            document.write('         <td style="vertical-align: middle" width="150"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="" style="width: 80px; font-size: 20px" /></td>\n');
+            document.write('         <td style="vertical-align: middle" width="150"><input name="add' + product + '" type="button" value="add to basket" class="btn btn-outline-dark" style="font-size: 20px" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
             document.write('       </tr>\n');
           }
         </script>
@@ -78,7 +80,7 @@
   <footer class="mastfoot mt-auto">
     <div class="inner">
       <h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; line-height: 22.0px; font-size: 18.0px; color: #0f7001; -webkit-text-stroke: #0f7001"><span class="s1"><b>© 2020 InterVeg Coventry Ltd. <br>
-Fresh produce from the Midland's green countryside.<span class="Apple-converted-space"> </span></b></span></h2>
+Fresh produce from the Midland's green countryside.<span class="Apple-converted-space"> </span></b></span></h2>
       <p class="p3"><span class="s1"></span><br></p>
     </div>
   </footer>
