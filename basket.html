@@ -49,8 +49,8 @@
               document.write('         <td style="vertical-align: middle"><h4>' + productDetails[product]["name"] + '</h4></td>\n');
               document.write('         <td style="vertical-align: middle"><h4>' + productDetails[product]["units"] + '</h4></td>\n');
               document.write('         <td style="vertical-align: middle"><h4>&pound;' + productDetails[product]["price"] + '</h4></td>\n');
-              document.write('         <td style="vertical-align: middle"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="' + basket[product] + '" style="width: 80px;font-size: 20px" /></td>\n');
-              document.write('         <td style="vertical-align: middle"><input name="change' + product + '" type="button" value="change quantity" class="btn btn-outline-success" style="font-size: 20px;"  onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+              document.write('         <td   width="100" style="vertical-align: middle" ><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="' + basket[product] + '" style="width: 80px;font-size: 20px"/></td>\n');
+              document.write('         <td style="vertical-align: middle"   width="120" ><input name="change' + product + '" type="button" value="change quantity" class="btn btn-outline-success" style="font-size: 20px;"  onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
               document.write('         <td style="vertical-align: middle"><input name="remove' + product + '" type="button" value="remove item" class="btn btn-outline-secondary" style="font-size: 20px;"  onclick="javascript:removeProductFromBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
               document.write('       </tr>\n');
               i++
