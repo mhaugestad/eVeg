@@ -57,7 +57,7 @@
               <input type="text" class="form-control" name="number" id="number" value=""/>
           </div>
           <div class="mb-3">
-              <label for="street">Address 2 (Optional)</label>
+              <label for="street">Address 2</label>
               <input type="text" class="form-control" name="street" id="street" value=""/>
           </div>
           <div class="row">
@@ -306,8 +306,9 @@
               </div>
           </div>
         </table>
+        <hr class="mb-4">
         <div align="center" style="position: relative; bottom: 0; left: 0; right: 0; height: 100px;">
-            <input type="button" class="btn btn-lg btn-outline-dark" name="cancel" value="Cancel" style="width: 400px;font-size:15pt;font-weight: bold" onclick="confirmCancel()"/>
+            <input type="button" class="btn btn-lg btn-outline-dark" name="cancel" value="Cancel" style="width: 400px;font-size:15pt;font-weight: bold;margin-right: 5px" onclick="confirmCancel()"/>
             <input type="button" class="btn btn-lg btn-warning" name="proceed" value="Place Order" style="width: 400px;font-size:15pt;font-weight: bold" onclick="setName();setAddress();setCardDetails();confirmOrder();"/>
         </div>
       </form>
