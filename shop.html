@@ -48,8 +48,8 @@
             document.write('         <td style="vertical-align: middle"><h5>' + productDetails[product]["name"] + '</h5></td>\n');
             document.write('         <td style="vertical-align: middle"><h5>' + '£' + productDetails[product]["price"] + '</h5></td>\n');
             document.write('         <td style="vertical-align: middle"><h5>' + productDetails[product]["units"] + '<h4></td>\n');
-            document.write('         <td style="vertical-align: middle"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="" style="width: 80px; font-size: 20px" /></td>\n');
-            document.write('         <td style="vertical-align: middle"><input name="add' + product + '" type="button" value="add to basket" class="btn btn-outline-dark" style="font-size: 20px" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+            document.write('         <td style="vertical-align: middle" width="150"><input class="form-control-sm" name="' + product + '" id="' + product + '" type="number" step="1" min="0" value="" style="width: 80px; font-size: 20px" /></td>\n');
+            document.write('         <td style="vertical-align: middle" width="150"><input name="add' + product + '" type="button" value="add to basket" class="btn btn-outline-dark" style="font-size: 20px" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
             document.write('       </tr>\n');
           }
         </script>
